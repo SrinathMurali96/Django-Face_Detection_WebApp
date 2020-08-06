@@ -18,7 +18,11 @@ from django.conf.urls import url
 
 from app.views import login
 
+def errorpage(request):
+    raise NotImplementedError("Ha! Fooled you!")
+    
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url('$', login, name='login'),
+    url('', login, name='login'),
+    url("error", errorpage),
 ]
