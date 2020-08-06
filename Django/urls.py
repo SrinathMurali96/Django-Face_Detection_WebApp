@@ -16,13 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url
 
-from app.views import login
+from app.views import login,export_predicted_result
 
 def errorpage(request):
     raise NotImplementedError("Ha! Fooled you!")
     
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url('', login, name='login'),
+    url('century/', login, name='login'),
+    url('exportTestResults/$', export_predicted_result, name='exportTestResults'),
     url("error", errorpage),
+    
 ]
