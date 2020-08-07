@@ -1,14 +1,14 @@
 import cv2
 from django.shortcuts import render
 from Django.settings import face_path
-
-# Create your views here.
-def login(request):
-    print("Inside the login method")
-    return render(request, 'index.html')
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
 
 
-def export_predicted_result(request):
+
+@require_http_methods(["GET","POST"])
+@csrf_exempt
+def detect_face(request):
     print("Inside the face detection method")
     try:
         print("Inside the face detection method")

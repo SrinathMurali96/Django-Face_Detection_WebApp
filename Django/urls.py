@@ -15,16 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import url
-
-from app.views import login,export_predicted_result
+from django.views import generic
+from app.views import detect_face
 
 def errorpage(request):
     raise NotImplementedError("Ha! Fooled you!")
     
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url('century/', login, name='login'),
-    url('exportTestResults/$', export_predicted_result, name='exportTestResults'),
+    url('startpage', generic.TemplateView.as_view(template_name="index.html")),
+    url('detectFace/$', detect_face, name='detectFace'),
     url("error", errorpage),
-    
 ]
